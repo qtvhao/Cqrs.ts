@@ -22,6 +22,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "contracts.ts": "github:qtvhao/contracts.ts"
+    "contracts.ts": "github:qtvhao/contracts.ts",
+    "kernel.ts": "github:qtvhao/kernel.ts",
+    "support.ts": "github:qtvhao/support.ts"
   }
 }
