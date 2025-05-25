@@ -12,18 +12,23 @@
   },
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
   "directories": {
     "doc": "docs",
     "test": "tests"
   },
   "scripts": {
+    "postinstall": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "contracts.ts": "github:qtvhao/contracts.ts",
     "kernel.ts": "github:qtvhao/kernel.ts",
     "support.ts": "github:qtvhao/support.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21"
   }
 }
