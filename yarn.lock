@@ -77,9 +77,17 @@ __metadata:
   resolution: "cqrs.ts@workspace:."
   dependencies:
     contracts.ts: "github:qtvhao/contracts.ts"
+    kernel.ts: "github:qtvhao/kernel.ts"
     support.ts: "github:qtvhao/support.ts"
   languageName: unknown
   linkType: soft
+
+"dotenv@npm:^16.5.0":
+  version: 16.5.0
+  resolution: "dotenv@npm:16.5.0"
+  checksum: 6543fe87b5ddf2d60dd42df6616eec99148a5fc150cb4530fef5bda655db5204a3afa0e6f25f7cd64b20657ace4d79c0ef974bec32fdb462cad18754191e7a90
+  languageName: node
+  linkType: hard
 
 "inversify@npm:^7.5.1":
   version: 7.5.1
@@ -91,6 +99,18 @@ __metadata:
   peerDependencies:
     reflect-metadata: ~0.2.2
   checksum: a4f6275d28c304600d1d4183e3b09c08cec4c804aed33ad4512e6fbfc239f4f67e065e9ca9278fd94f06d8fa71edafab117d619ef897167289df70231041307c
+  languageName: node
+  linkType: hard
+
+"kernel.ts@github:qtvhao/kernel.ts":
+  version: 1.0.0
+  resolution: "kernel.ts@https://github.com/qtvhao/kernel.ts.git#commit=b9014045a5529ef2bbe773db3348b2d56f195ff1"
+  dependencies:
+    contracts.ts: "github:qtvhao/contracts.ts"
+    dotenv: ^16.5.0
+    inversify: ^7.5.1
+    support.ts: "github:qtvhao/support.ts"
+  checksum: fc1147cc241b5453d4270e17ab50d3d292041590e251f467badb30a11c4ede09fad717fbeab2b92b6f9be8a37a19179e8605c9724f5039e9b78f91700ae437a4
   languageName: node
   linkType: hard
 
