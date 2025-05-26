@@ -15,10 +15,6 @@ import { CommandHandlerResolver } from "../Application/Handlers/CQRS/CommandHand
 export class CqrsServiceProvider extends ServiceProvider
     implements IServiceProvider {
     register(): void {
-        this.app.bind<ICommandBus>(TYPES.CommandBus).to(CommandBus)
-            .inSingletonScope();
-        this.app.bind<IQueryBus>(TYPES.QueryBus).to(QueryBus)
-            .inSingletonScope();
         this.app.bind<IQueryHandlerResolver>(TYPES.QueryHandlerResolver).to(
             QueryHandlerResolver,
         )
@@ -26,6 +22,10 @@ export class CqrsServiceProvider extends ServiceProvider
         this.app.bind<ICommandHandlerResolver>(TYPES.CommandHandlerResolver).to(
             CommandHandlerResolver,
         )
+            .inSingletonScope();
+        this.app.bind<ICommandBus>(TYPES.CommandBus).to(CommandBus)
+            .inSingletonScope();
+        this.app.bind<IQueryBus>(TYPES.QueryBus).to(QueryBus)
             .inSingletonScope();
     }
 }
