@@ -12,5 +12,6 @@ export class CqrsServiceProvider extends ServiceProvider
         this.app.bind<IQueryBus>(TYPES.QueryBus).to(QueryBus)
             .inSingletonScope();
         this.app.bind<IQueryHandlerResolver>(TYPES.QueryHandlerResolver).to(QueryHandlerResolver)
+            .inSingletonScope();
     }
 }
