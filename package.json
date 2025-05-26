@@ -26,6 +26,7 @@
   "dependencies": {
     "contracts.ts": "github:qtvhao/contracts.ts",
     "kernel.ts": "github:qtvhao/kernel.ts",
+    "reflect-metadata": "^0.2.2",
     "support.ts": "github:qtvhao/support.ts"
   },
   "devDependencies": {
