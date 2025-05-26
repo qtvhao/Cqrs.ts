@@ -1,18 +1,18 @@
 import {
+    CommandConstructor,
     ICommand,
     ICommandHandler,
     ICommandHandlerResolver,
-    QueryConstructor,
 } from "contracts.ts";
 
 export class CommandHandlerResolver implements ICommandHandlerResolver {
     private readonly handlers = new Map<string, ICommandHandler<ICommand>>();
 
     register<T extends ICommand>(
-        query: QueryConstructor<T>,
+        command: CommandConstructor<T>,
         handler: ICommandHandler<T>,
     ): void {
-        const key = query.name;
+        const key = command.name;
         if (this.handlers.has(key)) {
             throw new Error(`Command handler already registered for ${key}`);
         }
@@ -20,11 +20,13 @@ export class CommandHandlerResolver implements ICommandHandlerResolver {
     }
 
     resolve<T extends ICommand>(
-        query: QueryConstructor<T>,
+        command: CommandConstructor<T>,
     ): ICommandHandler<T> {
-        const handler = this.handlers.get(query.name);
+        const handler = this.handlers.get(command.name);
         if (!handler) {
-            throw new Error(`No handler registered for query: ${query.name}`);
+            throw new Error(
+                `No handler registered for command: ${command.name}`,
+            );
         }
         return handler as ICommandHandler<T>;
     }
