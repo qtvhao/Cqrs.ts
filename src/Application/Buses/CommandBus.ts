@@ -1,28 +1,18 @@
-import { ICommand, ICommandBus, ICommandHandler } from "contracts.ts";
+import { ICommand, ICommandBus, ICommandHandlerResolver } from "contracts.ts";
+import { injectable } from "inversify";
 
-export type CommandConstructor<T extends ICommand = ICommand> = new (...args: any[]) => T;
-
+@injectable()
 export class CommandBus implements ICommandBus {
-    private handlers = new Map<Function, ICommandHandler<ICommand>>();
-
-    register<T extends ICommand>(
-        commandClass: CommandConstructor<T>,
-        handler: ICommandHandler<T>,
-    ): void {
-        if (this.handlers.has(commandClass)) {
-            throw new Error(`Handler already registered for command: ${commandClass.name}`);
-        }
-        this.handlers.set(commandClass, handler as ICommandHandler<ICommand>);
-    }
+    constructor(
+        readonly handlerResolver: ICommandHandlerResolver
+    ) {}
 
     async dispatch<T extends ICommand>(command: T): Promise<void> {
-        const commandClass = command.constructor as CommandConstructor<T>;
-        const handler = this.handlers.get(commandClass) as ICommandHandler<T> | undefined;
-
+        const handler = this.handlerResolver.resolve<T, void>(command);
         if (!handler) {
-            throw new Error(`No handler registered for command: ${commandClass.name}`);
+            throw new Error(`No handler found for command: ${command.constructor.name}`);
         }
 
-        await handler.execute(command);
+        await handler.handle(command);
     }
 }
