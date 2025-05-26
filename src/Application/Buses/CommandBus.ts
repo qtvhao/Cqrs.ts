@@ -1,7 +1,5 @@
 import { ICommand, ICommandBus, ICommandHandlerResolver } from "contracts.ts";
-import { injectable } from "inversify";
 
-@injectable()
 export class CommandBus implements ICommandBus {
     constructor(
         readonly handlerResolver: ICommandHandlerResolver
