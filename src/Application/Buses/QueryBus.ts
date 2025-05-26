@@ -7,7 +7,7 @@ export class QueryBus implements IQueryBus {
   constructor(private readonly resolver: IQueryHandlerResolver) {}
 
   async execute<T extends IQuery, R extends IQueryResult>(query: T): Promise<R | void> {
-    const handler = this.resolver.resolve<T, R>(query.constructor as any);
+    const handler = this.resolver.resolve<T, R>(query.constructor as QueryConstructor<T>);
     return await handler.execute(query);
   }
 }

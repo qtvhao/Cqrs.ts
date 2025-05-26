@@ -1,4 +1,4 @@
-import { ICommand, ICommandBus, ICommandHandlerResolver } from "contracts.ts";
+import { CommandConstructor, ICommand, ICommandBus, ICommandHandlerResolver } from "contracts.ts";
 
 export class CommandBus implements ICommandBus {
     constructor(
@@ -6,7 +6,7 @@ export class CommandBus implements ICommandBus {
     ) {}
 
     async dispatch<T extends ICommand>(command: T): Promise<void> {
-        const handler = this.handlerResolver.resolve<T, void>(command);
+        const handler = this.handlerResolver.resolve<T>(command.constructor as CommandConstructor<T>);
         if (!handler) {
             throw new Error(`No handler found for command: ${command.constructor.name}`);
         }

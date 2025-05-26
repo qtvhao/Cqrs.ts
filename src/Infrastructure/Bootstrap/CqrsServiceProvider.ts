@@ -1,4 +1,4 @@
-import { ICommandBus, IEventHandlerResolver, IQueryBus, IQueryHandlerResolver, IServiceProvider, TYPES } from "contracts.ts";
+import { ICommandBus, IQueryBus, IQueryHandlerResolver, IServiceProvider, TYPES } from "contracts.ts";
 import { ServiceProvider } from "support.ts";
 import { CommandBus } from "../../Application/Buses/CommandBus";
 import { QueryBus } from "../../Application/Buses/QueryBus";
