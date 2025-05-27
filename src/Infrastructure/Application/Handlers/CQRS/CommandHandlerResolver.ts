@@ -15,6 +15,7 @@ export class CommandHandlerResolver implements ICommandHandlerResolver {
         handler: ICommandHandler<T>,
     ): void {
         const key = command.name;
+        console.log("📝 Registering command handler for:", key);
         if (this.handlers.has(key)) {
             throw new Error(`Command handler already registered for ${key}`);
         }
@@ -24,6 +25,7 @@ export class CommandHandlerResolver implements ICommandHandlerResolver {
     resolve<T extends ICommand>(
         command: CommandConstructor<T>,
     ): ICommandHandler<T> {
+        console.log("🔍 Resolving command handler for:", command.name);
         const handler = this.handlers.get(command.name);
         if (!handler) {
             throw new Error(
