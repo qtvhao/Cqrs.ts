@@ -32,6 +32,7 @@ export class CommandHandlerResolver implements ICommandHandlerResolver {
                 `No handler registered for command: ${command.name}`,
             );
         }
+        console.log("✅ Resolved handler:", handler.constructor.name);
         return handler as ICommandHandler<T>;
     }
 }
