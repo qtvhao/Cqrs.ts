@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "contracts.ts": "github:qtvhao/contracts.ts",
+    "inversify": "^7.5.1",
     "kernel.ts": "github:qtvhao/kernel.ts",
     "reflect-metadata": "^0.2.2",
     "support.ts": "github:qtvhao/support.ts"

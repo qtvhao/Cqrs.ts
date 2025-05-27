@@ -4,7 +4,9 @@ import {
     ICommandHandler,
     ICommandHandlerResolver,
 } from "contracts.ts";
+import { injectable } from "inversify";
 
+@injectable()
 export class CommandHandlerResolver implements ICommandHandlerResolver {
     private readonly handlers = new Map<string, ICommandHandler<ICommand>>();
 
