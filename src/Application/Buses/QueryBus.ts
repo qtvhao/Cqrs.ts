@@ -9,7 +9,8 @@ export type QueryConstructor<T extends IQuery = IQuery> = new (
 @injectable()
 export class QueryBus implements IQueryBus {
   constructor(
-    @inject(TYPES.QueryBus) private readonly resolver: IQueryHandlerResolver,
+    @inject(TYPES.QueryHandlerResolver)
+    private readonly resolver: IQueryHandlerResolver,
   ) {}
 
   async execute<T extends IQuery, R extends IQueryResult>(

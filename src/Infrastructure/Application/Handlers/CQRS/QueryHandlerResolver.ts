@@ -1,6 +1,8 @@
 import { IQuery, IQueryHandler, IQueryHandlerResolver, QueryConstructor } from "contracts.ts";
 import { IQueryResult } from "contracts.ts/dist/Application/DTOs/IQueryResult";
+import { injectable } from "inversify";
 
+@injectable()
 export class QueryHandlerResolver implements IQueryHandlerResolver {
   private readonly handlers = new Map<string, IQueryHandler<IQuery, IQueryResult>>();
 
